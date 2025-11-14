@@ -10,9 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 06d4187c10987be4ebf9d8a4c55254aa, type: 3}
-  m_Name: Bot3
+  m_Name: F_top.005_shirtvest
   m_EditorClassIdentifier: 
-  clothingPrefab: {fileID: 4495269558751691430, guid: db5942e118bf7354ba66bb48c95a5aa4, type: 3}
+  clothingPrefab: {fileID: 7308181609318262205, guid: 3b0ca61ae8619bf45867d96c426c4a98, type: 3}
   bodyPartsToHideName:
-  - F_body_hips
-  category: 2
+  - F_body_shoulders
+  - F_body_torso
+  - F_body_torso.001
+  - F_body_arms_upper
+  category: 1

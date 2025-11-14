@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 06d4187c10987be4ebf9d8a4c55254aa, type: 3}
-  m_Name: Bot4
+  m_Name: F_bot.001_pants
   m_EditorClassIdentifier: 
-  clothingPrefab: {fileID: -4121190152782363324, guid: 5fcf6b68a3b9fec4ba6de4c7dcefe7fa, type: 3}
+  clothingPrefab: {fileID: 1386196079066990407, guid: 5f4020d9b6a17a54ba982d4d46296c1e, type: 3}
   bodyPartsToHideName:
   - F_body_hips
+  - F_body_legs_knee
   - F_body_legs_upper
-  - F_body_legs_lower
   category: 2

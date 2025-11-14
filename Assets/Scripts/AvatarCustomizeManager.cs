@@ -12,29 +12,47 @@ public class AvatarCustomizeManager : MonoBehaviour
     private Dictionary<ClothingCategory, SkinnedMeshRenderer> activeRenderers = new();
     private Dictionary<ClothingCategory, List<GameObject>> hiddenPartsByCategory = new();
 
+    [Header("References")]
+    [SerializeField] private CharacterCustomizationUI characterCustomizationUI;
+
     private void Start()
     {
+    }
+    public void InitializeVariables()
+    {
+        playerBody = characterCustomizationUI.currentModel.transform;
+
+        ModelReferenceBinder binder = playerBody.GetComponent<ModelReferenceBinder>();
+        rootBone = binder.rootBone;
+        headAccessoriesSlot = binder.headAccessoriesSlot;
+        baseBodyRenderer = binder.baseBodyRenderer;
     }
 
     public void EquipClothing(ClothingDataSO newClothing)
     {
-        // Restore previously hidden parts
-        if (hiddenPartsByCategory.TryGetValue(newClothing.category, out var previouslyHidden))
+        // --- HANDLE OUTFIT SPECIFIC LOGIC ---
+        if (newClothing.category == ClothingCategory.Outfit)
         {
-            foreach (var part in previouslyHidden)
-                if (part != null)
-                    part.SetActive(true);
-            hiddenPartsByCategory.Remove(newClothing.category);
+            // Remove Top + Bottom renderers
+            RemoveCategoryRenderer(ClothingCategory.Top);
+            RemoveCategoryRenderer(ClothingCategory.Bottom);
+
+            // Restore hidden parts from Top + Bottom
+            RestoreHiddenParts(ClothingCategory.Top);
+            RestoreHiddenParts(ClothingCategory.Bottom);
+        }
+        else if (newClothing.category == ClothingCategory.Top || newClothing.category == ClothingCategory.Bottom)
+        {
+            // Remove Outfit renderer if exists
+            RemoveCategoryRenderer(ClothingCategory.Outfit);
+
+            // Restore hidden parts for Outfit
+            RestoreHiddenParts(ClothingCategory.Outfit);
         }
 
-        // Remove old clothing
-        if (activeRenderers.TryGetValue(newClothing.category, out var oldRenderer))
-        {
-            if (oldRenderer != null)
-                Destroy(oldRenderer.gameObject);
-        }
+        RestoreHiddenParts(newClothing.category);
+        RemoveCategoryRenderer(newClothing.category);
 
-        // Determine parent based on clothing type
         Transform parentSlot = (newClothing.category == ClothingCategory.Hair) ? headAccessoriesSlot : playerBody;
 
         // Spawn new clothing
@@ -42,7 +60,7 @@ public class AvatarCustomizeManager : MonoBehaviour
         newRenderer.bones = baseBodyRenderer.bones;
         newRenderer.rootBone = rootBone;
 
-        // Hide body parts based on name lookup
+        // Hide body parts
         List<GameObject> newlyHiddenParts = new();
         foreach (string partName in newClothing.bodyPartsToHideName)
         {
@@ -70,6 +88,29 @@ public class AvatarCustomizeManager : MonoBehaviour
         {
             var randomItem = list.GetRandomClothing(category);
             EquipClothing(randomItem);
+        }
+    }
+
+    private void RemoveCategoryRenderer(ClothingCategory category)
+    {
+        if (activeRenderers.TryGetValue(category, out var renderer))
+        {
+            if (renderer != null)
+                Destroy(renderer.gameObject);
+
+            activeRenderers.Remove(category);
+        }
+    }
+
+    private void RestoreHiddenParts(ClothingCategory category)
+    {
+        if (hiddenPartsByCategory.TryGetValue(category, out var list))
+        {
+            foreach (var part in list)
+                if (part != null)
+                    part.SetActive(true);
+
+            hiddenPartsByCategory.Remove(category);
         }
     }
 }

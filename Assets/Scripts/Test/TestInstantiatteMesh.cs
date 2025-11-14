@@ -18,6 +18,4 @@ public class TestInstantiatteMesh : MonoBehaviour
             Debug.Log(bone);
         }
     }
-
-    
 }

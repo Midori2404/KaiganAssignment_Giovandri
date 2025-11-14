@@ -10,14 +10,17 @@ public class ClothingListSO : ScriptableObject
     public List<ClothingDataSO> topClothes = new();
     public List<ClothingDataSO> bottomClothes = new();
     public List<ClothingDataSO> shoeClothes = new();
-
+    public List<ClothingDataSO> outfitClothes = new();
 
     public List<ClothingCategory> GetAllCategories()
     {
         return new List<ClothingCategory>
         {
+            ClothingCategory.Hair,
             ClothingCategory.Top,
             ClothingCategory.Bottom,
+            ClothingCategory.Shoes,
+            ClothingCategory.Outfit
         };
     }
 
@@ -25,8 +28,11 @@ public class ClothingListSO : ScriptableObject
     {
         return category switch
         {
+            ClothingCategory.Hair => hairClothes,
             ClothingCategory.Top => topClothes,
             ClothingCategory.Bottom => bottomClothes,
+            ClothingCategory.Shoes => shoeClothes,
+            ClothingCategory.Outfit => outfitClothes,
             _ => null
         };
     }
@@ -46,5 +52,6 @@ public enum ClothingCategory
     Hair,
     Top,
     Bottom,
-    Shoes
+    Shoes,
+    Outfit
 }

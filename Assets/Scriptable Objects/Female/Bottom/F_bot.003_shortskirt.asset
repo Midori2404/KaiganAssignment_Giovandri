@@ -10,10 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 06d4187c10987be4ebf9d8a4c55254aa, type: 3}
-  m_Name: Top7-A
+  m_Name: F_bot.003_shortskirt
   m_EditorClassIdentifier: 
-  clothingPrefab: {fileID: -8562725950971408071, guid: 8a225aea9fcdc2340b6b041785f47f02, type: 3}
+  clothingPrefab: {fileID: 4495269558751691430, guid: db5942e118bf7354ba66bb48c95a5aa4, type: 3}
   bodyPartsToHideName:
-  - F_body_shoulders
-  - F_body_torso
-  category: 1
+  - F_body_hips
+  category: 2

@@ -10,11 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 06d4187c10987be4ebf9d8a4c55254aa, type: 3}
-  m_Name: Top7-B
+  m_Name: F_outfit.002
   m_EditorClassIdentifier: 
-  clothingPrefab: {fileID: 6722648540036280053, guid: 26d16dd13dfad8d4a9b3da9e2e7cb2f6, type: 3}
+  clothingPrefab: {fileID: 999686219417992799, guid: dba6e518efb97df4bb6c6f2fb9cf5d26, type: 3}
   bodyPartsToHideName:
   - F_body_shoulders
   - F_body_torso
   - F_body_torso.001
-  category: 1
+  - F_body_hips
+  category: 4

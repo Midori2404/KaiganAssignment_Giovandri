@@ -1,0 +1,52 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2014f63415e214d45a26da192be97427, type: 3}
+  m_Name: FemaleClothingList
+  m_EditorClassIdentifier: 
+  hairClothes:
+  - {fileID: 11400000, guid: 0d6b60eb1de01454bb81bcb082e2b2c1, type: 2}
+  - {fileID: 11400000, guid: a495bb36d61b1a64a8bd88f30dd0fb92, type: 2}
+  - {fileID: 11400000, guid: b0ac47c990d82c648be923f366226cdf, type: 2}
+  - {fileID: 11400000, guid: 43aa9ab41f520cb4290f4d9237072e5a, type: 2}
+  - {fileID: 11400000, guid: 6db6ef3bbc9c0714aae9ddb4ff2676f3, type: 2}
+  - {fileID: 11400000, guid: bad56d3aa07e753479118f1898ff2641, type: 2}
+  topClothes:
+  - {fileID: 11400000, guid: 5ef2a4d9fcb3cc24890eb80bef72cbe6, type: 2}
+  - {fileID: 11400000, guid: 543092185eea7eb48abce25d707e820f, type: 2}
+  - {fileID: 11400000, guid: 0c342af900ddc6641bb1afa31f9bc4fb, type: 2}
+  - {fileID: 11400000, guid: 9aaab4c067d868d4c81dd541746580dc, type: 2}
+  - {fileID: 11400000, guid: 08e83fdd6f92fd044a05069b3eb1531d, type: 2}
+  - {fileID: 11400000, guid: 2748c8a06e5edcb4481effd47a044833, type: 2}
+  - {fileID: 11400000, guid: 95387cdf83c5a2d4bb4dfa1052b2f2c4, type: 2}
+  - {fileID: 11400000, guid: ef78e4e53f7137a44be972beffcea66b, type: 2}
+  - {fileID: 11400000, guid: 5d66724771cb97541a2014e3195282a8, type: 2}
+  - {fileID: 11400000, guid: d5bb5d663c1d96f418542ac9fa99a1d1, type: 2}
+  - {fileID: 11400000, guid: d9d50dbeeade57148a2fe0a2460b79bb, type: 2}
+  - {fileID: 11400000, guid: 284d229636e68f34c8f5ef99ef3177c1, type: 2}
+  bottomClothes:
+  - {fileID: 11400000, guid: bbe639c4c5e0c474ba39b30c048b72a4, type: 2}
+  - {fileID: 11400000, guid: dd6d25a0286b6904b8f11271790f51f8, type: 2}
+  - {fileID: 11400000, guid: 3ac3b380b0a99f84881f9e6ca7911e0d, type: 2}
+  - {fileID: 11400000, guid: fd4974c8ecdf83b46b8dacaa388c4b15, type: 2}
+  - {fileID: 11400000, guid: 04fe19700e17d054eaec0195d0d5580f, type: 2}
+  - {fileID: 11400000, guid: fea849c83aa2f7744b17a05dfa9c3aa3, type: 2}
+  shoeClothes:
+  - {fileID: 11400000, guid: f53c0de5187b05d46a633abc715b3f0b, type: 2}
+  - {fileID: 11400000, guid: 6a498c89ddcc099469e805a67bd3e699, type: 2}
+  - {fileID: 11400000, guid: f1d93da20f335224a97805b9a75cc56a, type: 2}
+  - {fileID: 11400000, guid: 2a6d37df5b26e054d9dc7f039f701be3, type: 2}
+  - {fileID: 11400000, guid: b61ad50efeaf11e41815bc9fa0baf52a, type: 2}
+  - {fileID: 11400000, guid: 31d336711779d804588034c2235b7802, type: 2}
+  - {fileID: 11400000, guid: 4b782c8c772f38c4b9b6654d1c3c3fa9, type: 2}
+  outfitClothes:
+  - {fileID: 11400000, guid: 7c81865cde7d2f348819578f91436b8a, type: 2}
+  - {fileID: 11400000, guid: 4aefab23351cf314fb3cfe05cc4752c2, type: 2}
