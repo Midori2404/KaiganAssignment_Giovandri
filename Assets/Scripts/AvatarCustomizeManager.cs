@@ -9,8 +9,14 @@ public class AvatarCustomizeManager : MonoBehaviour
     [SerializeField] private Transform rootBone;
     [SerializeField] private SkinnedMeshRenderer baseBodyRenderer;
 
+    // Track Clothing
     private Dictionary<ClothingCategory, SkinnedMeshRenderer> activeRenderers = new();
+
+    // Track Hidden Body Parts by Category
     private Dictionary<ClothingCategory, List<GameObject>> hiddenPartsByCategory = new();
+
+    // Track Hair
+    private Dictionary<ClothingCategory, GameObject> activeHairObjects = new();
 
     [Header("References")]
     [SerializeField] private CharacterCustomizationUI characterCustomizationUI;
@@ -22,6 +28,7 @@ public class AvatarCustomizeManager : MonoBehaviour
     {
         playerBody = characterCustomizationUI.currentModel.transform;
 
+        // Assign Variables From Spawned Model 
         ModelReferenceBinder binder = playerBody.GetComponent<ModelReferenceBinder>();
         rootBone = binder.rootBone;
         headAccessoriesSlot = binder.headAccessoriesSlot;
@@ -30,35 +37,45 @@ public class AvatarCustomizeManager : MonoBehaviour
 
     public void EquipClothing(ClothingDataSO newClothing)
     {
-        // --- HANDLE OUTFIT SPECIFIC LOGIC ---
+        // if Outfit
         if (newClothing.category == ClothingCategory.Outfit)
         {
-            // Remove Top + Bottom renderers
             RemoveCategoryRenderer(ClothingCategory.Top);
             RemoveCategoryRenderer(ClothingCategory.Bottom);
 
-            // Restore hidden parts from Top + Bottom
             RestoreHiddenParts(ClothingCategory.Top);
             RestoreHiddenParts(ClothingCategory.Bottom);
         }
+        // if either top or bottom
         else if (newClothing.category == ClothingCategory.Top || newClothing.category == ClothingCategory.Bottom)
         {
-            // Remove Outfit renderer if exists
             RemoveCategoryRenderer(ClothingCategory.Outfit);
 
-            // Restore hidden parts for Outfit
             RestoreHiddenParts(ClothingCategory.Outfit);
         }
 
+        // Remove Old Hair
+        if (newClothing.category == ClothingCategory.Hair)
+        {
+            RemoveHairObject();
+        }
+        else
+        {
+            RemoveCategoryRenderer(newClothing.category);
+        }
+
+        // Restore Previous Hidden Parts by Category
         RestoreHiddenParts(newClothing.category);
-        RemoveCategoryRenderer(newClothing.category);
 
-        Transform parentSlot = (newClothing.category == ClothingCategory.Hair) ? headAccessoriesSlot : playerBody;
-
-        // Spawn new clothing
-        SkinnedMeshRenderer newRenderer = Instantiate(newClothing.clothingPrefab, parentSlot);
-        newRenderer.bones = baseBodyRenderer.bones;
-        newRenderer.rootBone = rootBone;
+        // if Equipping Hair
+        if (newClothing.category == ClothingCategory.Hair)
+        {
+            SpawnHairObject(newClothing);
+        }
+        else
+        {
+            SpawnSkinnedClothing(newClothing);
+        }
 
         // Hide body parts
         List<GameObject> newlyHiddenParts = new();
@@ -70,27 +87,57 @@ public class AvatarCustomizeManager : MonoBehaviour
                 found.gameObject.SetActive(false);
                 newlyHiddenParts.Add(found.gameObject);
             }
-            else
-            {
-                Debug.LogWarning($"Body part '{partName}' not found under playerBody!");
-            }
         }
 
-        // Update tracking dictionaries
         hiddenPartsByCategory[newClothing.category] = newlyHiddenParts;
-        activeRenderers[newClothing.category] = newRenderer;
+    }
 
+    #region SPAWN CLOTHINGS
+    private void SpawnSkinnedClothing(ClothingDataSO clothing)
+    {
+        SkinnedMeshRenderer newRenderer = Instantiate(clothing.clothingPrefab, playerBody);
+        newRenderer.bones = baseBodyRenderer.bones;
+        newRenderer.rootBone = rootBone;
+
+        activeRenderers[clothing.category] = newRenderer;
+    }
+
+    private void SpawnHairObject(ClothingDataSO clothing)
+    {
+        GameObject hairObj = Instantiate(clothing.hairPrefab, headAccessoriesSlot);
+        activeHairObjects[ClothingCategory.Hair] = hairObj;
     }
 
     public void RandomizeOutfit(ClothingListSO list)
     {
-        foreach (var category in list.GetAllCategories())
+        // 50/50 Chance
+        bool useOutfit = Random.value > 0.5f;
+
+        // Hair
+        EquipClothing(list.GetRandomClothing(ClothingCategory.Hair));
+
+        // Shoes
+        EquipClothing(list.GetRandomClothing(ClothingCategory.Shoes));
+
+        // Either Outfit or Top and Bottom
+        if (useOutfit)
         {
-            var randomItem = list.GetRandomClothing(category);
-            EquipClothing(randomItem);
+            var outfit = list.GetRandomClothing(ClothingCategory.Outfit);
+            EquipClothing(outfit);
+        }
+        else
+        {
+            var top = list.GetRandomClothing(ClothingCategory.Top);
+            EquipClothing(top);
+
+            var bottom = list.GetRandomClothing(ClothingCategory.Bottom);
+            EquipClothing(bottom);
         }
     }
 
+    #endregion
+
+    #region REMOVE CLOTHINGS
     private void RemoveCategoryRenderer(ClothingCategory category)
     {
         if (activeRenderers.TryGetValue(category, out var renderer))
@@ -99,6 +146,17 @@ public class AvatarCustomizeManager : MonoBehaviour
                 Destroy(renderer.gameObject);
 
             activeRenderers.Remove(category);
+        }
+    }
+
+    private void RemoveHairObject()
+    {
+        if (activeHairObjects.TryGetValue(ClothingCategory.Hair, out GameObject hair))
+        {
+            if (hair != null)
+                Destroy(hair);
+
+            activeHairObjects.Remove(ClothingCategory.Hair);
         }
     }
 
@@ -113,4 +171,5 @@ public class AvatarCustomizeManager : MonoBehaviour
             hiddenPartsByCategory.Remove(category);
         }
     }
+    #endregion
 }

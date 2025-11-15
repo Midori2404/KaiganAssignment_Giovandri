@@ -10,12 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 06d4187c10987be4ebf9d8a4c55254aa, type: 3}
-  m_Name: F_bot.006_loosepants
+  m_Name: C_hair_short.004
   m_EditorClassIdentifier: 
-  hairPrefab: {fileID: 0}
-  clothingPrefab: {fileID: 4036190792340454457, guid: ed7c2584fc54f1d47b20b913b0e90c9a, type: 3}
-  bodyPartsToHideName:
-  - F_body_hips
-  - F_body_legs_upper
-  - F_body_legs_knee
-  category: 2
+  hairPrefab: {fileID: 5818141721773630617, guid: 80ef01842f9c0954998d821578021a59, type: 3}
+  clothingPrefab: {fileID: 0}
+  bodyPartsToHideName: []
+  category: 0

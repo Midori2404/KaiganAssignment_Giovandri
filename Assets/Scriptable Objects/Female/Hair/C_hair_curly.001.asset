@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06d4187c10987be4ebf9d8a4c55254aa, type: 3}
   m_Name: C_hair_curly.001
   m_EditorClassIdentifier: 
-  clothingPrefab: {fileID: 1919437705837742294, guid: ebcecc85527815d429920ee34c1646fa, type: 3}
+  hairPrefab: {fileID: 7478209522975825686, guid: 20f17f4a0c9171243b066fda72aafe22, type: 3}
+  clothingPrefab: {fileID: 0}
   bodyPartsToHideName: []
   category: 0

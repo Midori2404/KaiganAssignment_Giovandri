@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06d4187c10987be4ebf9d8a4c55254aa, type: 3}
   m_Name: C_hair_medium.002
   m_EditorClassIdentifier: 
-  clothingPrefab: {fileID: -5696299688780098109, guid: 29ffbfb8502ff644ebe1c9f75bff1b82, type: 3}
+  hairPrefab: {fileID: 7574265888287135416, guid: db6c6c515a81b0847ac14dc04e50a7c2, type: 3}
+  clothingPrefab: {fileID: 0}
   bodyPartsToHideName: []
   category: 0
