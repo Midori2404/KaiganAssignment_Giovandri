@@ -6,4 +6,5 @@ public class ModelReferenceBinder : MonoBehaviour
     public Transform rootBone;
     public Transform headAccessoriesSlot;
     public SkinnedMeshRenderer baseBodyRenderer;
+    public SkinnedMeshRenderer combinedMeshRenderer;
 }
