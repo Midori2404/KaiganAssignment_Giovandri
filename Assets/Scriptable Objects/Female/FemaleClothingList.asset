@@ -50,3 +50,4 @@ MonoBehaviour:
   outfitClothes:
   - {fileID: 11400000, guid: 7c81865cde7d2f348819578f91436b8a, type: 2}
   - {fileID: 11400000, guid: 4aefab23351cf314fb3cfe05cc4752c2, type: 2}
+  - {fileID: 11400000, guid: 84cec4f0d3abd44409ced74fbd6a6a37, type: 2}

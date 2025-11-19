@@ -1,13 +1,11 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class CharacterCustomizationUI : MonoBehaviour
+public class CharacterCustomizationArea : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] private GameObject genderPanel;
     [SerializeField] private GameObject avatarCustomizeDisplay;
-    [SerializeField] private GameObject maleCatalogue;
-    [SerializeField] private GameObject femaleCatalogue;
 
     [SerializeField] private Camera gameplayCamera;
     [SerializeField] private Camera customizeCamera;
@@ -21,7 +19,6 @@ public class CharacterCustomizationUI : MonoBehaviour
 
     public static string currentGender;
 
-    private AvatarCustomizeManager avatarCustomizeManager;
     private bool playerInRange = false;
     private bool isCustomizing = false;
 
@@ -65,33 +62,22 @@ public class CharacterCustomizationUI : MonoBehaviour
         {
             currentGender = "Female";
             currentModel = Instantiate(femaleModelPrefab, modelSpawnPoint);
-            femaleCatalogue.SetActive(true);
-            maleCatalogue.SetActive(false);
-
-            avatarCustomizeManager = femaleCatalogue.GetComponent<AvatarCustomizeManager>();
         }
         if (gender == "Male")
         {
             currentGender = "Male";
             currentModel = Instantiate(maleModelPrefab, modelSpawnPoint);
-            maleCatalogue.SetActive(true);
-            femaleCatalogue.SetActive(false);
-
-            avatarCustomizeManager = maleCatalogue.GetComponent<AvatarCustomizeManager>();
         }
 
-        // Switch panels
         genderPanel.SetActive(false);
         avatarCustomizeDisplay.SetActive(true);
-        avatarCustomizeManager.InitializeVariables();
+        AvatarCustomizeManager.Instance.InitializeModel(currentModel);
     }
 
     public void BackToGenderSelection()
     {
         currentGender = null;
         avatarCustomizeDisplay.SetActive(false);
-        maleCatalogue.SetActive(false);
-        femaleCatalogue.SetActive(false);
 
         if (currentModel != null)
         {

@@ -47,7 +47,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4431197158545689959
 Transform:
   m_ObjectHideFlags: 0
@@ -2274,10 +2274,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98426bc9d3c750e429828533c23c9e63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gender: 1
   rootBone: {fileID: 6974521556805826657}
   headAccessoriesSlot: {fileID: 596725476968265127}
   baseBodyRenderer: {fileID: 6974521556434623927}
   combinedMeshRenderer: {fileID: 3209979968927028661}
+  bodyParts:
+  - partName: F_body_arms_lower
+    renderer: {fileID: 6974521557582065629}
+  - partName: F_body_arms_upper
+    renderer: {fileID: 6974521557553184325}
+  - partName: F_body_feet
+    renderer: {fileID: 6974521555915514425}
+  - partName: F_body_hands
+    renderer: {fileID: 6974521556294896769}
+  - partName: F_body_hips
+    renderer: {fileID: 6974521555945509716}
+  - partName: F_body_legs_knee
+    renderer: {fileID: 6974521557755207771}
+  - partName: F_body_legs_lower
+    renderer: {fileID: 6974521556116034372}
+  - partName: F_body_legs_upper
+    renderer: {fileID: 6974521556135911611}
+  - partName: F_body_shoulders
+    renderer: {fileID: 6974521556214185216}
+  - partName: F_body_torso
+    renderer: {fileID: 6974521556539429943}
+  - partName: F_body_torso.001
+    renderer: {fileID: 6974521557743871878}
+  - partName: F_body_torso.002
+    renderer: {fileID: 2292730484840240820}
+  - partName: F_HeadSlot
+    renderer: {fileID: 6974521556434623927}
 --- !u!1 &6974521556434623925
 GameObject:
   m_ObjectHideFlags: 0

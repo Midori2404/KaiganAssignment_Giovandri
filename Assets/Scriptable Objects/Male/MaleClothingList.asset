@@ -1,0 +1,46 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2014f63415e214d45a26da192be97427, type: 3}
+  m_Name: MaleClothingList
+  m_EditorClassIdentifier: 
+  hairClothes:
+  - {fileID: 11400000, guid: 0504c9cc17910f34593839ed7f6e2d28, type: 2}
+  - {fileID: 11400000, guid: 69e78540d01657649850be75af3ac506, type: 2}
+  - {fileID: 11400000, guid: 0c8d76db14d75ce4c8d7c691dc0485f5, type: 2}
+  - {fileID: 11400000, guid: 0d6b60eb1de01454bb81bcb082e2b2c1, type: 2}
+  - {fileID: 11400000, guid: bad56d3aa07e753479118f1898ff2641, type: 2}
+  - {fileID: 11400000, guid: baa6250efd3c3e54e900f9018ef5d2e2, type: 2}
+  - {fileID: 11400000, guid: 7f041f3d36569904d8e0d9c9be3b17a9, type: 2}
+  - {fileID: 11400000, guid: 5449ea84fbca54149b5064cd4cd5e560, type: 2}
+  topClothes:
+  - {fileID: 11400000, guid: c49b8b32f2543ee49a3c70e225b6c688, type: 2}
+  - {fileID: 11400000, guid: 924ba222a136e814e95455ce6a15c57b, type: 2}
+  - {fileID: 11400000, guid: d39508870ac846246b7cfb636d86fe3d, type: 2}
+  - {fileID: 11400000, guid: b20d3d45e01664c488d98fd077765d5c, type: 2}
+  - {fileID: 11400000, guid: 37d6a19d3f2e5d34798c2459776471e5, type: 2}
+  - {fileID: 11400000, guid: 95d3928a89940d943a708292de94e533, type: 2}
+  - {fileID: 11400000, guid: 4dbc7b650dad5ef4cb9ab12da9ed72df, type: 2}
+  bottomClothes:
+  - {fileID: 11400000, guid: 333ce69ea07b5b04790aa75a97cfe9c6, type: 2}
+  - {fileID: 11400000, guid: 1959e651c5e600e47b5d9b69f0cf563d, type: 2}
+  - {fileID: 11400000, guid: 03a4e8dd5df36f0478ab9a76ffe36ee3, type: 2}
+  shoeClothes:
+  - {fileID: 11400000, guid: 21c449826eac733489dd715bb06f3d72, type: 2}
+  - {fileID: 11400000, guid: 5a96a5802c2df0742b10deea66f9db52, type: 2}
+  - {fileID: 11400000, guid: 7c2624ed552bac145acf44dcee3e9852, type: 2}
+  - {fileID: 11400000, guid: 04a0bcda26285714c9027012c2ac1060, type: 2}
+  - {fileID: 11400000, guid: 8fc36861f14ae294b944c7b0534287d8, type: 2}
+  - {fileID: 11400000, guid: eab94beaf7a2c074ea968329d01d38d9, type: 2}
+  - {fileID: 11400000, guid: 67cea822a0cb53348b242a628347fd53, type: 2}
+  outfitClothes:
+  - {fileID: 11400000, guid: d8f470c24f6014542912e94ae5a4bd31, type: 2}
+  - {fileID: 11400000, guid: 25518002cbc255b43a806ec4ce3d6f69, type: 2}

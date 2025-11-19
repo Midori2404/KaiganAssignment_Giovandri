@@ -12,18 +12,6 @@ public class ClothingListSO : ScriptableObject
     public List<ClothingDataSO> shoeClothes = new();
     public List<ClothingDataSO> outfitClothes = new();
 
-    public List<ClothingCategory> GetAllCategories()
-    {
-        return new List<ClothingCategory>
-        {
-            ClothingCategory.Hair,
-            ClothingCategory.Top,
-            ClothingCategory.Bottom,
-            ClothingCategory.Shoes,
-            ClothingCategory.Outfit
-        };
-    }
-
     public List<ClothingDataSO> GetClothingByCategory(ClothingCategory category)
     {
         return category switch

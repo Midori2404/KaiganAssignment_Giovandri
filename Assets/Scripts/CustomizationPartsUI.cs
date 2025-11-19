@@ -1,21 +1,17 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class CustomizationPartsUI : MonoBehaviour
 {
+    [Header("References")]
+    [SerializeField] private Transform buttonParent;
+    [SerializeField] private GameObject clothingButtonPrefab;
 
-    [Header("Female UI Panels")]
-    [SerializeField] private GameObject femaleOutfitPanel;
-    [SerializeField] private GameObject femaleHairPanel;
-    [SerializeField] private GameObject femaleTopPanel;
-    [SerializeField] private GameObject femaleBottomPanel;
-    [SerializeField] private GameObject femaleshoesPanel;
+    [Header("Clothing Lists")]
+    [SerializeField] private ClothingListSO maleClothingList;
+    [SerializeField] private ClothingListSO femaleClothingList;
 
-    [Header("Male UI Panels")]
-    [SerializeField] private GameObject maleOutfitPanel;
-    [SerializeField] private GameObject maleHairPanel;
-    [SerializeField] private GameObject maleTopPanel;
-    [SerializeField] private GameObject maleBottomPanel;
-    [SerializeField] private GameObject maleshoesPanel;
+    private List<GameObject> spawnedButtons = new();
 
     private void OnEnable()
     {
@@ -24,40 +20,32 @@ public class CustomizationPartsUI : MonoBehaviour
 
     public void ShowCategory(string category)
     {
-        if (CharacterCustomizationUI.currentGender == "Female")
-        {
-            femaleOutfitPanel.SetActive(false);
-            femaleHairPanel.SetActive(false);
-            femaleTopPanel.SetActive(false);
-            femaleBottomPanel.SetActive(false);
-            femaleshoesPanel.SetActive(false);
+        // Clear Buttons
+        foreach (var obj in spawnedButtons)
+            Destroy(obj);
+        spawnedButtons.Clear();
 
-            switch (category)
-            {
-                case "Outfit": femaleOutfitPanel.SetActive(true); break;
-                case "Hair": femaleHairPanel.SetActive(true); break;
-                case "Top": femaleTopPanel.SetActive(true); break;
-                case "Bottom": femaleBottomPanel.SetActive(true); break;
-                case "Shoes": femaleshoesPanel.SetActive(true); break;
-            }
+        ClothingListSO activeList = CharacterCustomizationArea.currentGender == "Male" ? maleClothingList : femaleClothingList;
+
+        if (!System.Enum.TryParse(category, out ClothingCategory categoryEnum))
+            return;
+
+        // Get Clothing List
+        List<ClothingDataSO> clothes = activeList.GetClothingByCategory(categoryEnum);
+        if (clothes == null || clothes.Count == 0)
+        {
+            Debug.Log($"No clothing found for {category}");
+            return;
         }
 
-        if (CharacterCustomizationUI.currentGender == "Male")
+        // Instantiate Buttons
+        foreach (var clothing in clothes)
         {
-            maleOutfitPanel.SetActive(false);
-            maleHairPanel.SetActive(false);
-            maleTopPanel.SetActive(false);
-            maleBottomPanel.SetActive(false);
-            maleshoesPanel.SetActive(false);
+            GameObject btn = Instantiate(clothingButtonPrefab, buttonParent);
+            ClothingButtonUI buttonUI = btn.GetComponent<ClothingButtonUI>();
+            buttonUI.Setup(clothing);
 
-            switch (category)
-            {
-                case "Outfit": maleOutfitPanel.SetActive(true); break;
-                case "Hair": maleHairPanel.SetActive(true); break;
-                case "Top": maleTopPanel.SetActive(true); break;
-                case "Bottom": maleBottomPanel.SetActive(true); break;
-                case "Shoes": maleshoesPanel.SetActive(true); break;
-            }
+            spawnedButtons.Add(btn);
         }
     }
 }
