@@ -1,6 +1,9 @@
 # **Character Customization System**
 
 ## **1. Overview**
+### **Walkthrough Video**
+https://drive.google.com/file/d/1lRPooCEgtnEHClxGzWjpZGn0Y0tbFB2v/view?usp=sharing
+
 This project implements a modular, data-driven **Character Customization System** for runtime avatar customization, NPC crowd generation, and rendering optimization inside Unity.
 
 It contains:
