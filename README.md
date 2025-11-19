@@ -111,7 +111,12 @@ Minimal changes required due to the data-driven structure.
 
 ---
 
-## **7. What I Would Add With More Time**
+## **8. Commit History**
+<img width="376" alt="Commit History" src="https://github.com/user-attachments/assets/7d438497-4ce8-4c0c-a822-a0c742b50ef4" />
+
+---
+
+## **9. What I Would Add With More Time**
 - Save/Load system for player appearance
 - Material atlassing tool for automated baking
 - LOD system for optimized distant NPCs
@@ -119,7 +124,7 @@ Minimal changes required due to the data-driven structure.
 
 ---
 
-## **8. Bonus Questions**
+## **10. Bonus Questions**
 
 ### **1. How would you profile and optimize this for low-end mobile devices?**
 - Profile on an actual low-end device using Unity Profiler (CPU, GPU, rendering, memory).
