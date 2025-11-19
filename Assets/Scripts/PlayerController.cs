@@ -1,6 +1,9 @@
 using UnityEngine;
 
 [RequireComponent(typeof(CharacterController))]
+/// <summary>
+/// Simple first-person and free-fly controller used for navigating the scene during customization and testing.
+/// </summary>
 public class PlayerController : MonoBehaviour
 {
     [Header("Movement Settings")]
@@ -36,6 +39,9 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// WASD horizontal movement + Q/E vertical movement.
+    /// </summary>
     void HandleMovement()
     {
         float h = Input.GetAxisRaw("Horizontal");
@@ -54,6 +60,9 @@ public class PlayerController : MonoBehaviour
         controller.Move(velocity * Time.deltaTime);
     }
 
+    /// <summary>
+    /// Mouse look rotation.
+    /// </summary>
     void HandleMouseLook()
     {
         float mouseX = Input.GetAxisRaw("Mouse X") * mouseSensitivity * Time.deltaTime;
@@ -66,6 +75,9 @@ public class PlayerController : MonoBehaviour
         transform.localRotation = Quaternion.Euler(rotationX, rotationY, 0f);
     }
 
+    /// <summary>
+    /// Allows temporarily unlocking the cursor by holding Left Alt.
+    /// </summary>
     void HandleCursorState()
     {
         // If player holds Left Alt, unlock mouse and stop panning

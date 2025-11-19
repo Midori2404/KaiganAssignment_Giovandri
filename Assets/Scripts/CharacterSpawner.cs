@@ -1,5 +1,9 @@
 using UnityEngine;
 
+/// <summary>
+/// Spawns a grid of randomized avatar models for preview/testing.
+/// Each avatar is assigned random clothing based on its gender.
+/// </summary>
 public class CharacterSpawner : MonoBehaviour
 {
     [Header("Avatar Prefabs")]
@@ -16,12 +20,18 @@ public class CharacterSpawner : MonoBehaviour
 
     private int avatarsToSpawn = 0;
 
+    /// <summary>
+    /// Called by UI input field to set how many avatars should be spawned.
+    /// </summary>
     public void SetAvatarCount(string countText)
     {
         if (int.TryParse(countText, out int value))
             avatarsToSpawn = Mathf.Max(0, value);
     }
 
+    /// <summary>
+    /// Spawns a new grid of randomized characters.
+    /// </summary>
     public void SpawnAvatars()
     {
         ClearPrevious();

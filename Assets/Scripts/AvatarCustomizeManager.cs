@@ -3,6 +3,9 @@ using System.Linq;
 using System.Reflection;
 using UnityEngine;
 
+/// <summary>
+/// Controls equipping, hiding body parts, spawning clothing, and combining meshes for optimization.
+/// </summary>
 public class AvatarCustomizeManager : MonoBehaviour
 {
     public static AvatarCustomizeManager Instance { get; private set; }
@@ -36,6 +39,9 @@ public class AvatarCustomizeManager : MonoBehaviour
         Instance = this;
     }
 
+    /// <summary>
+    /// Assigns model references and prepares dictionaries.
+    /// </summary>
     public void InitializeModel(GameObject model)
     {
         playerBody = model.transform;
@@ -51,6 +57,9 @@ public class AvatarCustomizeManager : MonoBehaviour
         ResetDictionaries();
     }
 
+    /// <summary>
+    /// Binds the references from the model prefab.
+    /// </summary>
     private void AssignBinder(ModelReferenceBinder binder)
     {
         rootBone = binder.rootBone;
@@ -72,6 +81,11 @@ public class AvatarCustomizeManager : MonoBehaviour
         equippedData = new Dictionary<ClothingCategory, ClothingDataSO>();
     }
 
+    /// <summary>
+    /// Equips a clothing item and handles hiding body parts,
+    /// removing conflicting categories (e.g., Outfit replaces Top/Bottom),
+    /// and spawning the correct renderer or hair object.
+    /// </summary>
     public void EquipClothing(ClothingDataSO newClothing)
     {
         BreakCombinedOutfit();
@@ -222,6 +236,10 @@ public class AvatarCustomizeManager : MonoBehaviour
     #endregion
 
     #region MESH COMBINING
+    /// <summary>
+    /// Combines all equipped clothing SkinnedMeshes into a single renderer to reduce draw calls. 
+    /// Used for crowd spawning or finalizing the avatar.
+    /// </summary>
     public void FinalizeOutfit()
     {
         if (activeRenderers.Count == 0 || combinedMeshRenderer == null)

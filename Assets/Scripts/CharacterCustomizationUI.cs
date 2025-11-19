@@ -1,6 +1,9 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+/// <summary>
+/// Handles entering the customization area, opening the UI, spawning the selected gender model, and switching cameras.
+/// </summary>
 public class CharacterCustomizationArea : MonoBehaviour
 {
     [Header("References")]
@@ -52,6 +55,9 @@ public class CharacterCustomizationArea : MonoBehaviour
         Cursor.visible = true;
     }
 
+    /// <summary>
+    /// Spawns the selected gender model and opens the customization UI.
+    /// </summary>
     public void PickGender(string gender)
     {
         if (currentModel != null)

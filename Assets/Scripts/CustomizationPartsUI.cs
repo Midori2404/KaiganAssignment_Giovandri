@@ -1,6 +1,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Generates clothing selection buttons for the chosen category based on the currently selected gender.
+/// </summary>
 public class CustomizationPartsUI : MonoBehaviour
 {
     [Header("References")]
@@ -18,6 +21,9 @@ public class CustomizationPartsUI : MonoBehaviour
         ShowCategory("Outfit");
     }
 
+    /// <summary>
+    /// Displays all clothing items belonging to the selected category, clearing old buttons and spawning new ones.
+    /// </summary>
     public void ShowCategory(string category)
     {
         // Clear Buttons

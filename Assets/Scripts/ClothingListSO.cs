@@ -12,6 +12,9 @@ public class ClothingListSO : ScriptableObject
     public List<ClothingDataSO> shoeClothes = new();
     public List<ClothingDataSO> outfitClothes = new();
 
+    /// <summary>
+    /// Returns the list of clothing items based on the selected category.
+    /// </summary>
     public List<ClothingDataSO> GetClothingByCategory(ClothingCategory category)
     {
         return category switch
@@ -25,6 +28,9 @@ public class ClothingListSO : ScriptableObject
         };
     }
 
+    /// <summary>
+    /// Returns a random clothing item from the given category.
+    /// </summary>
     public ClothingDataSO GetRandomClothing(ClothingCategory category)
     {
         List<ClothingDataSO> list = GetClothingByCategory(category);
